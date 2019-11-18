@@ -10,7 +10,7 @@ spring:
  #   password: jckc
 
     druid:
-      url: jdbc:mysql://123.207.230.97:3306/house_wx_api?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
+      url: jdbc:mysql://123.207.230.97:3306/crowd_funding?allowMultiQueries=true&useUnicode=true&characterEncoding=UTF-8
       username: root
       password: jckc
 
