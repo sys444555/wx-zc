@@ -32,8 +32,8 @@ public class ProjectDetailController {
      * 列表
      */
     @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public ResponseUtil list(){
-        List<ProjectDetailEntity> projectDetailEntities = projectDetailService.projectDetailList();
+    public ResponseUtil list(Integer dataAmount){
+        List<ProjectDetailEntity> projectDetailEntities = projectDetailService.projectDetailList(dataAmount);
         return ResponseUtil.success(projectDetailEntities);
     }
 

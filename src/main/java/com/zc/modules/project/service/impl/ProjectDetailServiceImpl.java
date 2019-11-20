@@ -23,9 +23,9 @@ public class ProjectDetailServiceImpl extends ServiceImpl<ProjectDetailMapper, P
 
 
 
-    public List<ProjectDetailEntity> projectDetailList(){
+    public List<ProjectDetailEntity> projectDetailList(Integer dataAmount){
 
-           return  projectDetailMapper.selectList();
+           return  projectDetailMapper.selectList(dataAmount);
 
 
     }

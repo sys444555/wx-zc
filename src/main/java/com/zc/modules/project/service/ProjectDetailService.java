@@ -18,6 +18,6 @@ import java.util.List;
  */
 public interface ProjectDetailService extends IService<ProjectDetailEntity> {
 
-    public List<ProjectDetailEntity> projectDetailList();
+    public List<ProjectDetailEntity> projectDetailList(Integer dataAmount);
 }
 

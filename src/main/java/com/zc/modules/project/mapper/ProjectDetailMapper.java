@@ -14,6 +14,6 @@ import java.util.List;
  */
 public interface ProjectDetailMapper extends BaseMapper<ProjectDetailEntity> {
 
-    public List<ProjectDetailEntity> selectList();
+    public List<ProjectDetailEntity> selectList(Integer dataAmount);
 
 }

@@ -26,13 +26,15 @@
         <result property="businessIsAuthenticated" column="business_is_authenticated"/>
     </resultMap>
 
-    <select id="selectList" resultMap="projectDetailMap">
-        SELECT a.id,a.funding_target,a.funding_now,a.funding_rate,a.funding_numer,a.status,
+    <select id="selectList" resultMap="projectDetailMap" parameterType="int">
+          SELECT a.id,a.funding_target,a.funding_now,a.funding_rate,a.funding_numer,a.status,
         a.funding_start_time,a.funding_ent_time,a.img_url,a.funding_name,a.funding_title,a.funding_introduction,
         a.funding_type,a.create_time,
         b.business_name,b.business_address,b.business_phone,b.business_grade,b.business_is_authenticated
         FROM project_detail a , project_business b
         WHERE a.project_business_id = b.id
+				ORDER BY create_time desc
+				LIMIT #{dataAmount}
 
     </select>
 
