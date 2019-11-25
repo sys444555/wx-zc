@@ -35,11 +35,16 @@ public class ProjectCommentEntity implements Serializable {
 	/**
 	 * 评论内容
 	 */
-	private String coment;
+	private String comment;
+
+	/**
+	 * 评论用户头像
+	 */
+	private String userAvatarUrl;
 	/**
 	 * 评论用户id
 	 */
-	private String fromOpenId;
+	private String userNickName;
 	/**
 	 *
 	 */

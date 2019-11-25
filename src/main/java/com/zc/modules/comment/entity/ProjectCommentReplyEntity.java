@@ -15,14 +15,13 @@ import java.util.Date;
  */
 @TableName("project_comment_reply")
 @Data
-public class ProjectCommentReplyEntity implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class ProjectCommentReplyEntity extends ProjectCommentEntity {
 
 	/**
 	 * 主键id
 	 */
 	@TableId(type = IdType.AUTO)
-	private Integer id;
+	private Integer replyId;
 		/**
 	 * 评论id
 	 */
@@ -30,7 +29,7 @@ public class ProjectCommentReplyEntity implements Serializable {
 		/**
 	 * 回复目标的id
 	 */
-	private Integer replyId;
+	private Integer replyTargetId;
 		/**
 	 * 0.对评论的回复 1.对回复的回复
 	 */
@@ -42,14 +41,11 @@ public class ProjectCommentReplyEntity implements Serializable {
 		/**
 	 * 回复用户id
 	 */
-	private String fromOpenId;
+	private String fromUserNickName;
 		/**
 	 * 目标用户id
 	 */
-	private String toOpenId;
-		/**
-	 * 创建时间
-	 */
-	private Date createTime;
+	private String toUserNickName;
+
 
 }

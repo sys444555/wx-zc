@@ -4,18 +4,33 @@
 <mapper namespace="com.zc.modules.comment.mapper.ProjectCommentMapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.zc.modules.comment.entity.ProjectCommentEntity" id="projectCommentMap">
+    <resultMap type="com.zc.modules.comment.entity.ProjectCommentReplyEntity" id="projectCommentMap">
         <result property="id" column="id"/>
         <result property="projectId" column="project_id"/>
         <result property="projectType" column="project_type"/>
-        <result property="coment" column="coment"/>
-        <result property="fromOpenId" column="from_open_id"/>
+        <result property="comment" column="comment"/>
+        <result property="userAvatarUrl" column="user_avatar_url"/>
+        <result property="userNickName" column="user_nick_name"/>
         <result property="createTime" column="create_time"/>
+        <result property="replyId" column="reply_id"/>
+        <result property="commentId" column="comment_id"/>
+        <result property="replyTargetId" column="reply_target_id"/>
+        <result property="replyType" column="reply_type"/>
+        <result property="content" column="content"/>
+        <result property="fromUserNickName" column="from_user_nick_name"/>
+        <result property="toUserNickName" column="ro_user_nick_name"/>
     </resultMap>
 
 
-
-
-
-
+    <select id="selectCommentList" resultMap="projectCommentMap">
+        SELECT a.id,a.project_id,a.project_type,a.comment,c.nick_name AS userNickName,
+        c.avatar_url AS user_avatar_url,a.create_time,b.reply_id,b.comment_id,
+        b.reply_target_id,b.reply_type,b.content,d.nick_name AS from_user_nick_name,e.nick_name AS to_user_nick_name
+        FROM project_comment a LEFT JOIN project_comment_reply b
+        ON a.id = b.comment_id
+        LEFT JOIN user c ON a.from_open_id = c.open_id
+		LEFT JOIN user d ON b.from_open_id = d.open_id
+		LEFT JOIN user e ON b.to_open_id = e.open_id
+        WHERE a.project_id = #{projectId}
+    </select>
 </mapper>
