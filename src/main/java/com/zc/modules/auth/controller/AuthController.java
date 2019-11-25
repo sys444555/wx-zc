@@ -7,16 +7,19 @@ import com.zc.basic.WxAccount;
 import com.zc.common.exception.JcException;
 import com.zc.common.utils.HttpRequest;
 import com.zc.common.utils.ResponseUtil;
+import com.zc.common.utils.WebGetTokenUtils;
 import com.zc.config.JwtConfig;
+import com.zc.modules.auth.entity.UserEntity;
+import com.zc.modules.auth.service.UserService;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -30,6 +33,9 @@ import java.util.Map;
 @RequestMapping("/wx")
 public class AuthController {
 
+
+    @Resource
+    private UserService userService;
 
     @Autowired
     private JwtConfig jwtConfig;
@@ -106,11 +112,11 @@ public class AuthController {
         return ResponseUtil.success(map);
     }
 
-    /**
+    /*
      *  微信信息存入数据库
      * @param userEntity
      * @return
-     *//*
+     */
     @RequestMapping(value = "/api/user/decodeUserInfo", method = RequestMethod.POST)
     public ResponseUtil decodeUserInfo(UserEntity userEntity) {
         String token = WebGetTokenUtils.getToken();
@@ -124,7 +130,7 @@ public class AuthController {
         return ResponseUtil.success();
     }
 
-
+/**
     @RequestMapping(value = "/user/detail", method = RequestMethod.GET)
     public ResponseUtil getUserDetail(String token){
         List<UserEntity> userDetail = userService.getUserDetail();
