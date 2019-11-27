@@ -48,7 +48,7 @@ public class ProjectDetailEntity implements Serializable {
 		/**
 	 * 项目众筹结束时间
 	 */
-	    private Date fundingEntTime;
+	    private Date fundingEndTime;
 		/**
 	 * 项目图片
 	 */
